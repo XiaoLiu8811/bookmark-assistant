@@ -10,8 +10,8 @@ export const SAMPLE = [
   folder('Dev', [
     folder('CSS', [
       folder('Layout', [
-        page('A Complete Guide to Flexbox', 'https://example-css.dev/guides/flexbox'),
-        page('Centering in CSS: A Complete Guide', 'https://example-css.dev/centering'),
+        page('A Complete Guide to Flexbox', 'https://css.example.com/guides/flexbox'),
+        page('Centering in CSS: A Complete Guide', 'https://css.example.com/centering'),
       ]),
       page('Grid by Example', 'https://grid.example.org/'),
     ]),
@@ -35,3 +35,18 @@ export const sampleTree = (): Node[] => [
     ],
   },
 ];
+
+/** The summary each made-up page offers for link previews. Grid by Example has none. */
+export const DESCRIPTIONS: Record<string, string> = {
+  'https://css.example.com/guides/flexbox': 'Everything about flexbox layout, from the container to each item, with diagrams.',
+  'https://css.example.com/centering': 'Every way to center an element in CSS, horizontally and vertically.',
+  'https://react-notes.example.com/state': 'How state works in React components, and when to lift it up.',
+  'https://family-food.example.net/sunday': 'The slow-roast Sunday dinner the whole family asks for.',
+  'https://bread.example.com/starter': 'Start a sourdough starter from flour and water in seven days.',
+  'https://trips.example.org/kyoto-itinerary': 'Temples, food and quiet streets: a three-day plan for Kyoto.',
+};
+
+/** Every bookmark URL in SAMPLE. */
+export const SAMPLE_URLS = (function collect(nodes: Node[]): string[] {
+  return nodes.flatMap((n) => (n.url ? [n.url] : collect(n.children ?? [])));
+})(SAMPLE);

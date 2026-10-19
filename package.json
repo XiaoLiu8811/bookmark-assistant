@@ -5,7 +5,8 @@
   "scripts": {
     "build": "node build.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "npm run typecheck && vitest run && npm run build && playwright test"
+    "test": "npm run typecheck && vitest run && npm run build && node build.mjs --test && playwright test",
+    "package": "npm run build && node scripts/package.mjs"
   },
   "dependencies": {
     "minisearch": "^7.2.0"

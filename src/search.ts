@@ -1,6 +1,7 @@
 import MiniSearch from 'minisearch';
+import { MAX_RESULTS } from './limits';
 
-export const MAX_RESULTS = 3;
+export { MAX_RESULTS, SHOWN_FIRST } from './limits';
 
 export interface Bookmark {
   id: string;

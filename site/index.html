@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bookmark Assistant</title>
+<meta name="description" content="A Chrome extension that shows your own matching bookmarks beside Google results, so what you saved comes first. Your bookmarks never leave your device.">
+<link rel="icon" href="icon-128.png">
+<style>
+  :root {
+    --text: #172A3A; --soft: #58636B; --bg: #F8F8F5; --rule: #D6DAD7; --strong: #172A3A; --on-strong: #fff;
+    --glow-a: rgba(245, 158, 11, 0.14); --glow-b: rgba(66, 111, 118, 0.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --text: #F1F3F4; --soft: #AEB6BC; --bg: #142230; --rule: #2E4456; --strong: #fff; --on-strong: #172A3A; --glow-a: rgba(245, 158, 11, 0.12); --glow-b: rgba(66, 111, 118, 0.3); }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; color: var(--text); font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: radial-gradient(60% 50% at 0% 0%, var(--glow-a), transparent 70%), radial-gradient(60% 60% at 100% 30%, var(--glow-b), transparent 70%), var(--bg);
+  }
+  main { max-width: 960px; margin: 0 auto; padding: 56px 16px 72px; }
+  .hero { display: flex; align-items: center; gap: 20px; margin-bottom: 18px; }
+  .hero img { width: 72px; height: 72px; }
+  h1 { margin: 0; font-size: clamp(32px, 6vw, 48px); line-height: 1.1; letter-spacing: -0.03em; }
+  .lede { max-width: 640px; margin: 0 0 28px; font-size: 20px; color: var(--soft); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+  .button { display: inline-block; padding: 10px 20px; border-radius: 999px; font-weight: 600; text-decoration: none; color: var(--text); border: 1px solid var(--rule); }
+  .button.strong { background: var(--strong); color: var(--on-strong); border-color: var(--strong); }
+  .button[aria-disabled="true"] { opacity: 0.6; pointer-events: none; }
+  figure { margin: 0 0 48px; }
+  figure img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--rule); box-shadow: 0 24px 60px -24px rgba(23, 42, 58, 0.35); }
+  figcaption { margin-top: 10px; font-size: 14px; color: var(--soft); }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px 32px; margin-bottom: 48px; }
+  .features h2 { margin: 0 0 6px; font-size: 18px; letter-spacing: -0.01em; }
+  .features p { margin: 0; color: var(--soft); }
+  footer { padding-top: 20px; border-top: 1px solid var(--rule); font-size: 15px; color: var(--soft); }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="icon-128.png" alt="">
+    <h1>Bookmark Assistant</h1>
+  </div>
+  <p class="lede">You saved those pages because they were useful. Search Google as usual, and your own matching bookmarks appear first, right beside the results.</p>
+  <div class="actions">
+    <a class="button strong" aria-disabled="true">Chrome Web Store: coming soon</a>
+    <a class="button" href="https://github.com/XiaoLiu8811/bookmark-assistant">Source code</a>
+  </div>
+
+  <figure>
+    <img src="screenshot-1.png" width="1280" height="800" alt="A Google-style results page with the Bookmark Assistant panel on the right, listing three matching bookmarks with descriptions and folder paths.">
+    <figcaption>The panel beside the results, with a one-line description of each bookmark. (Made-up bookmarks.)</figcaption>
+  </figure>
+
+  <div class="features">
+    <section><h2>Finds what you meant</h2><p>No need to remember a title or folder. Matching uses titles, folder names and web addresses, and tolerates typos.</p></section>
+    <section><h2>Tells them apart</h2><p>Each bookmark can show the page's own one-line summary, so you know which one you want before opening it.</p></section>
+    <section><h2>Cleans up as you go</h2><p>The trash button deletes a bookmark you no longer need, and Undo puts it right back.</p></section>
+    <section><h2>Stays out of the way</h2><p>No match, no panel. Hide shrinks it to a small tab, and the toolbar icon turns it off.</p></section>
+    <section><h2>Private by design</h2><p>Your bookmarks and searches never leave your device. No account, no server, no tracking.</p></section>
+  </div>
+
+  <footer>
+    <a href="privacy/">Privacy policy</a> · <a href="https://github.com/XiaoLiu8811/bookmark-assistant">Source code</a> · Made by <a href="https://xiaoliu.us/">Xiao Liu</a>
+  </footer>
+</main>
+</body>
+</html>

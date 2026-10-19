@@ -1,0 +1,35 @@
+# Publishes site/ (home page and privacy policy) to GitHub Pages:
+# https://xiaoliu8811.github.io/bookmark-assistant/
+name: Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', 'store/images/screenshot-1.png', 'src/icons/icon-128.png', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add the images the pages use
+        run: cp store/images/screenshot-1.png src/icons/icon-128.png site/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

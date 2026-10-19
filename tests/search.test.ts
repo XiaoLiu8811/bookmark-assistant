@@ -45,9 +45,10 @@ describe('search', () => {
     expect(titles('complete history of rome')).toEqual([]);
   });
 
-  it(`returns at most ${MAX_RESULTS} results`, () => {
-    expect(titles('css').length).toBeLessThanOrEqual(MAX_RESULTS);
-    expect(titles('example').length).toBe(MAX_RESULTS);
+  it(`returns every match up to ${MAX_RESULTS}`, () => {
+    expect(titles('example')).toHaveLength(7); // every sample bookmark's URL has "example"
+    const many = Array.from({ length: 15 }, (_, i) => ({ id: String(i), title: `Recipe ${i}`, url: `https://food${i}.test/`, folders: [] }));
+    expect(search(buildIndex(many), 'recipe')).toHaveLength(MAX_RESULTS);
   });
 
   it('indexes and searches 5,000 bookmarks well within 200 ms', () => {
