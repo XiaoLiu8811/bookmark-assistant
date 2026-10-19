@@ -10,3 +10,11 @@ Thumbs.db
 # Real bookmark exports are personal data; keep them out of the repo.
 bookmarks*.html
 bookmarks*.json
+
+# Test output
+test-results/
+playwright-report/
+
+# Chrome "Pack extension" output; the .pem is the private signing key
+*.pem
+*.crx

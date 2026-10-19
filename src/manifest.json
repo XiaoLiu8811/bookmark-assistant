@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Bookmark Assistant",
+  "version": "0.1.0",
+  "description": "Shows your matching bookmarks above Google results. Everything stays on your device.",
+  "permissions": ["bookmarks", "storage"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/search*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": { "default_title": "Bookmark Assistant" },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'none'"
+  }
+}
