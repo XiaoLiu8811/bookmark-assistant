@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+
+# Real bookmark exports are personal data; keep them out of the repo.
+bookmarks*.html
+bookmarks*.json
